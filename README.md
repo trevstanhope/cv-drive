@@ -1,5 +1,5 @@
-# Computer Vision Guidance System for Rowcrop Cultivators  (CVGSRC)
-Multi-camera computer-vision guidance system for rowcrop cultivators
+# Row Assist
+Control system for assisting vehicle guidance during row-crop field operations
 
 ## Installation
 * Requires SciPy 0.11 or higher
