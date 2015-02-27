@@ -1,4 +1,4 @@
-# Row Assist
+# CV Drive
 Control system for assisting vehicle guidance during row-crop field operations
 
 ## Installation

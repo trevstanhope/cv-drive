@@ -1,6 +1,5 @@
 """
-Agri-Vision 2.0
-Agri-Fusion 2000, Inc.
+cv-drive.py
 McGill University, Department of Bioresource Engineering
 """
 
