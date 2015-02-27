@@ -4,11 +4,12 @@ McGill University, Department of Bioresource Engineering
 """
 
 __author__ = 'Trevor Stanhope'
-__version__ = '2.0.'
+__version__ = '0.0.1'
 __license__ = 'All Rights Reserved'
 
 ## Libraries
-from zaber import zaber
+from base import control 
+#from zaber import zaber
 import cv2, cv
 import serial # Electro-hydraulic controller
 import pymongo # DB

@@ -1,4 +1,5 @@
 #!/bin/sh
+# Install all dependencies for the cv-drive
 
 # Aptitude
 apt-get update
