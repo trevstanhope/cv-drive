@@ -12,6 +12,8 @@ class GPS:
             self.gpsd = gps.gps()
             self.gpsd.stream(gps.WATCH_ENABLE)
             thread.start_new_thread(self.update_gps, ())
+        except TypeError as err:
+            print('ERROR in __init__(): GPS failed to initialize.')
         except Exception as err:
             print('ERROR in __init__(): GPS not available! %s' % str(err))
             self.latitude = 0

@@ -25,21 +25,12 @@ except Exception as err:
 ## Class
 class Vehicle:
 
-    def __init__(self, config_file):
-
-        # Load Config
-        print('\tLoading config file: %s' % config_file)
-        self.config = json.loads(open(config_file).read())
-        for key in self.config:
-            try:
-                getattr(self, key)
-            except AttributeError as error:
-                setattr(self, key, self.config[key])
+    def __init__(self, config):
+        self.config = json.loads(open(config, 'rb').read())
         self.control = control.Arduino()
         self.gps = gps.GPS()
         self.db = db.Logger()
     
-    ## Close
     """
     Function to shutdown application safely
     1. Close windows
