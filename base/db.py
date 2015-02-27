@@ -2,17 +2,18 @@
 db.py
 """
 
-# import pymongo # DB
-# from bson import json_util # DB
-# from pymongo import MongoClient # DB
+import pymongo
+from bson import json_util
+from pymongo import MongoClient
+from datetime import datetime
 
 class Logger:
-	def __init__(self):
-		self.LOG_NAME = datetime.strftime(datetime.now(), self.LOG_FORMAT)
-        self.MONGO_NAME = datetime.strftime(datetime.now(), self.MONGO_FORMAT)
-        if self.VERBOSE: print('[Initialing MongoDB] %s' % datetime.strftime(datetime.now(), self.TIME_FORMAT))
-        if self.VERBOSE: print('\tConnecting to MongoDB: %s' % self.MONGO_NAME)
-        if self.VERBOSE: print('\tNew session: %s' % self.LOG_NAME)
+
+    def __init__(self, log_format='%Y%m%d.log', mongo_format='%Y%m%d'):
+        self.LOG_NAME = datetime.strftime(datetime.now(), log_format)
+        self.MONGO_NAME = datetime.strftime(datetime.now(), mongo_format)
+        print('Connecting to MongoDB: %s' % self.MONGO_NAME)
+        print('New session: %s' % self.LOG_NAME)
         try:
             self.client = MongoClient()
             self.database = self.client[self.MONGO_NAME]

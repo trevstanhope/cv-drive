@@ -5,8 +5,8 @@ cv.py
 #import cv2, cv
 
 class Cam:
-	
-	def __init__(self):
+
+    def __init__(self):
         if self.VERBOSE: print('[Initialing Cameras] %s' % datetime.strftime(datetime.now(), self.TIME_FORMAT))
         print('\tImage Width: %d px' % self.PIXEL_WIDTH)
         print('\tImage Height: %d px' % self.PIXEL_HEIGHT)
@@ -34,7 +34,7 @@ class Cam:
             cam.set(cv.CV_CAP_PROP_FRAME_WIDTH, self.PIXEL_WIDTH)
             cam.set(cv.CV_CAP_PROP_FRAME_HEIGHT, self.PIXEL_HEIGHT)
             self.cameras.append(cam)
-		
+
     ## Capture Images
     """
     1. Attempt to capture an image
