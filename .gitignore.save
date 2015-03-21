@@ -1,0 +1,8 @@
+temp
+*~
+*/*~
+logs/*.csv
+opencv*
+logs
+*.pyc
+tests/results/

@@ -1,5 +1,5 @@
 """
-cv-drive.py
+CV Drive (working  title)
 McGill University, Department of Bioresource Engineering
 """
 
@@ -8,7 +8,7 @@ __version__ = '0.0.1'
 __license__ = 'All Rights Reserved'
 
 ## Libraries
-from base import control, gps, db, cv
+from base import control, gps, db, cvm
 import json
 import numpy # Curve
 from matplotlib import pyplot as plt # Display
@@ -29,7 +29,8 @@ class Vehicle:
         self.config = json.loads(open(config, 'rb').read())
         self.control = control.Arduino()
         self.gps = gps.GPS()
-        self.db = db.Logger()
+        self.logger = db.Logger()
+        self.row_finder = cvm.RowFinder()
     
     """
     Function to shutdown application safely
@@ -43,7 +44,7 @@ class Vehicle:
         except Exception as error:
             print('\tERROR in close()\t%s' % str(error))
         try:
-            self.cv.close()
+            self.row_finder.close()
         except Exception as error:
             print('ERROR in close()\t%s' % str(error))
         
@@ -53,9 +54,16 @@ class Vehicle:
     def run(self):
         while True:
             try:
-                pass
+                cams = range(1)
+                imgs = [self.row_finder.capture_image(c) for c in cams]
+                masks = [self.row_finder.plant_filter(i) for i in imgs]
+                offsets = [self.row_finder.find_offset(m) for m in masks]
+                for m in imgs:
+                    self.row_finder.display(m)
             except KeyboardInterrupt as error:
-                self.close()    
+                self.close()
+            except Exception as error:
+                print str(error)
     
 ## Main
 if __name__ == '__main__':
